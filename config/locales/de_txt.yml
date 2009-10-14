@@ -1,0 +1,40 @@
+de:
+  login:
+    title: Zur Verwendung von Tracks bitte einloggen
+    login: Benutzername
+    password: Passwort
+    stay_logged_in: Dauerhaft anmelden
+    sign_in: Einloggen
+
+  preferences:
+    title: Deine Einstellungen
+    first_name: Vorname
+    last_name: Nachname
+    date_format: Datumsformat
+    your_current_date: Dein aktuelles Datum
+    title_date_format: Datumsformat im Titel
+    your_current_title_date: Dein aktuelles Datum im Titel
+    time_zone: Zeitzone
+    your_current_time: Deine aktuelle Zeit
+    week_starts_on: Woche startet am
+    show_the_last: Zeige die letzten
+    completed_items: erledigten Aufgaben
+    show_completed_projects_in_sidebar: Zeige erledigte Projekte in der Seitenleiste
+    show_hidden_projects_in_sidebar: Zeige versteckte Projekte in der Seitenleiste
+    show_hidden_contexts_in_sidebar: Zeige versteckte Kontexte in der Seitenleiste
+    go_to_project_page_on_complete: Gehe zur Projektseite wenn Aufgaben erledigt
+    staleness_starts_after: Aufgabe ist abgestanden nach
+    days: Tagen
+    due_style: Fällig Stil
+    due_in__days: Fällig in ___ Tagen
+    due_on__: Fällig am ________
+    admin_mail: Admin email
+    refresh_interval: Intervall zum Auffrischen (in Minuten)
+    verbose_action_descriptors: Wortreiche Aufgabenbeschreibungen
+    actions_per_page: Aufgaben pro Seite (Mobile Ansicht)
+    from_email: Email-Absender
+    default_email_context: Standard Email-Kontext
+
+  sidebar:
+    active_projects: Aktive Projekte
+

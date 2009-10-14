@@ -1,0 +1,39 @@
+en:
+  login:
+    title: Please log in to use Tracks
+    login: Login
+    password: Password
+    stay_logged_in: Stay logged in
+    sign_in: Sign In
+
+  preferences:
+    title: Your preferences
+    first_name: First name
+    last_name: Last name
+    date_format: Date format
+    your_current_date: Your current date
+    title_date_format: Title date format
+    your_current_title_date: Your current title date
+    time_zone: Time zone
+    your_current_time: Your current time
+    week_starts_on: Week starts on
+    show_the_last: Show the last
+    completed_items: completed items
+    show_completed_projects_in_sidebar: Show completed projects in sidebar
+    show_hidden_projects_in_sidebar: Show hidden projects in sidebar
+    show_hidden_contexts_in_sidebar: Show hidden contexts in sidebar
+    go_to_project_page_on_complete: Go to project page on todo complete
+    staleness_starts_after: Staleness starts after
+    days: days
+    due_style: Due style
+    due_in__days: Due in ___ days
+    due_on__: Due on ________
+    admin_mail: Admin email
+    refresh_interval: Refresh interval (in minutes)
+    verbose_action_descriptors: Verbose action descriptors
+    actions_per_page: Actions per page (Mobile View)
+    from_email: From email
+    default_email_context: Default email context
+
+  sidebar:
+    active_projects: Active Projects
