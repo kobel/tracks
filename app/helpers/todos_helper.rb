@@ -38,7 +38,7 @@ module TodosHelper
 
   def remote_edit_menu_item(parameters, todo)
     return link_to_remote(
-      image_tag("edit_off.png", :mouseover => "edit_on.png", :alt => "", :align => "absmiddle")+" Edit",
+      image_tag("edit_off.png", :mouseover => "edit_on.png", :alt => "", :align => "absmiddle")+" "+I18n.t(:"common.edit"),
       :url => {:controller => 'todos', :action => 'edit', :id => todo.id},
       :method => 'get',
       :with => "'#{parameters}'",
@@ -48,7 +48,7 @@ module TodosHelper
 
   def remote_delete_menu_item(parameters, todo)
     return link_to_remote(
-      image_tag("delete_off.png", :mouseover => "delete_on.png", :alt => "", :align => "absmiddle")+" Delete",
+      image_tag("delete_off.png", :mouseover => "delete_on.png", :alt => "", :align => "absmiddle")+" "+I18n.t(:"common.delete"),
       :url => {:controller => 'todos', :action => 'destroy', :id => todo.id},
       :method => 'delete',
       :with => "'#{parameters}'",

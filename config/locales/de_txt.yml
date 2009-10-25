@@ -1,4 +1,17 @@
 de:
+  common:
+    due_today: Fällig Heute
+    due_tomorrow: Fällig Morgen
+    edit: Bearbeiten
+    delete: Löschen
+    description: Beschreibung
+    notes: Notizen
+    project: Projekt
+    context: Kontext
+    tags_separate_with_commas: Tags (mit Kommas trennen)
+    due: Fällig
+    show_from: Zeigen ab
+
   login:
     title: Zur Verwendung von Tracks bitte einloggen
     login: Benutzername

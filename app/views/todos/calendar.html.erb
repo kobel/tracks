@@ -1,7 +1,7 @@
 <div id="display_box">
 
   <div class="container">
-    <h2>Due today</h2>
+    <h2><%= I18n.t "common.due_today" %></h2>
     <div id="empty_due_today" <%= "style=\"display:none\"" unless @due_today.empty? %>>
       No actions due today
     </div>

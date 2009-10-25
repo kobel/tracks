@@ -35,9 +35,9 @@ module ApplicationHelper
        
     case days
     when 0
-      "<a title='#{format_date(due)}'><span class=\"amber\">Due Today</span></a> "
+      "<a title='#{format_date(due)}'><span class=\"amber\">#{I18n.t(:"common.due_today")}</span></a> "
     when 1
-      "<a title='#{format_date(due)}'><span class=\"amber\">Due Tomorrow</span></a> "
+      "<a title='#{format_date(due)}'><span class=\"amber\">#{I18n.t(:"common.due_tomorrow")}</span></a> "
       # due 2-7 days away
     when 2..7
       if prefs.due_style == Preference.due_styles[:due_on]

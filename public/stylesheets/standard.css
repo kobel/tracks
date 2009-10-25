@@ -518,6 +518,11 @@ span.tag {
     margin-right: 2px;
 }
 
+span.translation_missing {
+    border: 1px solid #F00;
+    background: #DDDDDD;
+}
+
 span.tag a, 
 span.tag a:link, 
 span.tag a:active, 

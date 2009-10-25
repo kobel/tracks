@@ -1,4 +1,17 @@
 en:
+  common:
+    due_today: Due Today
+    due_tomorrow: Due Tomorrow
+    edit: Edit
+    delete: Delete
+    description: Description
+    notes: Notes
+    project: Project
+    context: Context
+    tags_separate_with_commas: Tags (separate with commas)
+    due: Due
+    show_from: Show from
+
   login:
     title: Please log in to use Tracks
     login: Login
