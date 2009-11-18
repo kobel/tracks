@@ -11,6 +11,12 @@ de:
     tags_separate_with_commas: Tags (mit Kommas trennen)
     due: Fällig
     show_from: Zeigen ab
+    overdue_by_x_days:
+      one: Überfällig um 1 Tag
+      other: Überfällig um {{count}} Tage
+    due_in_x_days:
+      one: Fällig in 1 Tag
+      other: Fällig in {{count}} Tage
 
   login:
     title: Zur Verwendung von Tracks bitte einloggen

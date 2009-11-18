@@ -43,15 +43,15 @@ module ApplicationHelper
       if prefs.due_style == Preference.due_styles[:due_on]
         "<a title='#{format_date(due)}'><span class=\"orange\">Due on #{due.strftime("%A")}</span></a> "
       else
-        "<a title='#{format_date(due)}'><span class=\"orange\">Due in #{pluralize(days, 'day')}</span></a> "
+        "<a title='#{format_date(due)}'><span class=\"orange\">#{I18n.t(:"common.due_in_x_days", :count => days)}</span></a> "
       end
     else
       # overdue or due very soon! sound the alarm!
       if days < 0
-        "<a title='#{format_date(due)}'><span class=\"red\">Overdue by #{pluralize(days * -1, 'day')}</span></a> "
+        "<a title='#{format_date(due)}'><span class=\"red\">#{I18n.t(:"common.overdue_by_x_days", :count => (days * -1))}</span></a> "
       else
         # more than a week away - relax
-        "<a title='#{format_date(due)}'><span class=\"green\">Due in #{pluralize(days, 'day')}</span></a> "
+        "<a title='#{format_date(due)}'><span class=\"green\">#{I18n.t(:"common.due_in_x_days", :count => days)}</span></a> "
       end
     end
   end
