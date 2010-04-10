@@ -7,7 +7,9 @@ de:
     description: Beschreibung
     notes: Notizen
     project: Projekt
+    projects: Projekte
     context: Kontext
+    contexts: Kontexte
     tags_separate_with_commas: Tags (mit Kommas trennen)
     due: Fällig
     show_from: Zeigen ab
@@ -17,6 +19,16 @@ de:
     due_in_x_days:
       one: Fällig in 1 Tag
       other: Fällig in {{count}} Tage
+    toggle_notes: Notizen ein-/ausblenden
+    toggle_all_notes: Alle Notizen ein-/ausblenden
+    show_all_notes: Zeige alle Notizen
+    logout: Abmelden
+    home: Startseite
+    starred: Sternaufgaben
+    see_your_starred_actions: Zeige die Sternaktionen
+    tickler: Aufgeschobene Aufgaben
+    repeating_todos: Wiederkehrende Aufgaben
+    manage_recurring_actions: Wiederkehrende Aufgaben verwalten
 
   login:
     title: Zur Verwendung von Tracks bitte einloggen
@@ -56,4 +68,7 @@ de:
 
   sidebar:
     active_projects: Aktive Projekte
-
+    active_contexts: Aktive Kontexte
+    hidden_projects: Verborgene Projekte
+    completed_projects: Abgeschlossene Projekte
+    hidden_contexts: Verborgene Kontexte

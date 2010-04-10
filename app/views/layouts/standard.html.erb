@@ -40,21 +40,21 @@
         </h1>
       </div>
       <div id="minilinks">
-        <%= link_to("Toggle notes", "#", {:accesskey => "S", :title => "Toggle all notes", :id => "toggle-notes-nav"}) %>
+        <%= link_to(I18n.t(:"common.toggle_notes"), "#", {:accesskey => "S", :title => I18n.t(:"common.toggle_all_notes"), :id => "toggle-notes-nav"}) %>
         &nbsp;|&nbsp;
-        <%= link_to "Logout (#{current_user.display_name}) »", logout_path %> <p>
+        <%= link_to I18n.t(:"common.logout") + " (#{current_user.display_name}) »", logout_path %> <p>
       </div>
       <div id="navcontainer">
         <ul class="sf-menu">
-          <li><%= navigation_link("Home", home_path, {:accesskey => "t", :title => "Home"} ) %></li>
-          <li><%= navigation_link("Starred", tag_path("starred"), :title => "See your starred actions" ) %></li>
-          <li><%= navigation_link("Projects", projects_path, {:accesskey=>"p", :title=>"Projects"} ) %></li>
-          <li><%= navigation_link("Tickler", tickler_path, {:accesskey =>"k", :title => "Tickler"} ) %></li>
+          <li><%= navigation_link(I18n.t(:"common.home"), home_path, {:accesskey => "t", :title => I18n.t(:"common.home")} ) %></li>
+          <li><%= navigation_link(I18n.t(:"common.starred"), tag_path("starred"), :title => I18n.t(:"common.see_your_starred_actions") ) %></li>
+          <li><%= navigation_link(I18n.t(:"common.projects"), projects_path, {:accesskey=>"p", :title=>I18n.t(:"common.projects")} ) %></li>
+          <li><%= navigation_link(I18n.t(:"common.tickler"), tickler_path, {:accesskey =>"k", :title => I18n.t(:"common.tickler")} ) %></li>
           <li><a href="#">Organize</a>
             <ul>
-              <li><%= navigation_link( "Contexts", contexts_path, {:accesskey=>"c", :title=>"Contexts"} ) %></li>
-              <li><%= navigation_link( "Notes", notes_path, {:accesskey => "o", :title => "Show all notes"} ) %></li>
-              <li><%= navigation_link( "Repeating todos", {:controller => "recurring_todos", :action => "index"}, :title => "Manage recurring actions" ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.contexts"), contexts_path, {:accesskey=>"c", :title => I18n.t(:"common.contexts")} ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.notes"), notes_path, {:accesskey => "o", :title => I18n.t(:"common.show_all_notes")} ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.repeating_todos"), {:controller => "recurring_todos", :action => "index"}, :title => I18n.t(:"common.manage_recurring_actions") ) %></li>
             </ul>
           </li>
           <li><a href="#">View</a>

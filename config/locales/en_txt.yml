@@ -7,7 +7,9 @@ en:
     description: Description
     notes: Notes
     project: Project
+    projects: Projects
     context: Context
+    contexts: Contexts
     tags_separate_with_commas: Tags (separate with commas)
     due: Due
     show_from: Show from
@@ -17,6 +19,16 @@ en:
     due_in_x_days:
       one: Due in 1 day
       other: Due in {{count}} days
+    toggle_notes: Toggle notes
+    toggle_all_notes: Toggle all notes
+    show_all_notes: Show all notes
+    logout: Logout
+    home: Home
+    starred: Starred
+    see_your_starred_actions: See your starred actions
+    tickler: Tickler
+    repeating_todos: Repeating todos
+    manage_recurring_actions: Manage recurring actions
 
   login:
     title: Please log in to use Tracks
@@ -56,3 +68,7 @@ en:
 
   sidebar:
     active_projects: Active Projects
+    active_contexts: Active Contexts
+    hidden_projects: Hidden Projects
+    completed_projects: Completed Projects
+    hidden_contexts: Hidden Contexts
