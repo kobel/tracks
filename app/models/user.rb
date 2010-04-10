@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
              def find_by_params(params)
                find(params['id'] || params['context_id']) || nil
              end
+             def update_positions(context_ids)
+                context_ids.each_with_index do |id, position|
+                  context = self.detect { |c| c.id == id.to_i }
+                  raise "Context id #{id} not associated with user id #{@user.id}." if context.nil?
+                  context.update_attribute(:position, position + 1)
+                end
+              end
            end
   has_many :projects,
            :order => 'projects.position ASC',
@@ -91,6 +98,10 @@ class User < ActiveRecord::Base
                 find(:all, :conditions => ['show_from <= ?', Time.zone.now ]).collect { |t| t.activate! }
               end
            end
+  has_many :pending_todos,
+           :class_name => 'Todo',
+           :conditions => [ 'state = ?', 'pending' ],
+           :order => 'show_from ASC, todos.created_at DESC'
   has_many :completed_todos,
            :class_name => 'Todo',
            :conditions => ['todos.state = ? AND NOT(todos.completed_at IS NULL)', 'completed'],
@@ -142,11 +153,14 @@ class User < ActiveRecord::Base
     if Tracks::Config.auth_schemes.include?('ldap')
       return candidate if candidate.auth_type == 'ldap' && SimpleLdapAuthenticator.valid?(login, pass)
     end
+    if Tracks::Config.auth_schemes.include?('cas') && candidate.auth_type.eql?("cas")
+      return candidate #because we can not auth them with out thier real password we have to settle for this
+    end
     return nil
   end
   
   def self.find_by_open_id_url(raw_identity_url)
-    normalized_open_id_url = OpenIdAuthentication.normalize_url(raw_identity_url)
+    normalized_open_id_url = OpenIdAuthentication.normalize_identifier(raw_identity_url)
     find(:first, :conditions => ['open_id_url = ?', normalized_open_id_url])
   end
   
@@ -237,6 +251,6 @@ protected
   
   def normalize_open_id_url
     return if open_id_url.nil?
-    self.open_id_url = OpenIdAuthentication.normalize_url(open_id_url)
+    self.open_id_url = OpenIdAuthentication.normalize_identifier(open_id_url)
   end
 end

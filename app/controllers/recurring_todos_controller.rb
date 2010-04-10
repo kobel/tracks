@@ -2,7 +2,7 @@ class RecurringTodosController < ApplicationController
 
   helper :todos, :recurring_todos
 
-  append_before_filter :init, :only => [:index, :new, :edit]
+  append_before_filter :init, :only => [:index, :new, :edit, :create]
   append_before_filter :get_recurring_todo_from_param, :only => [:destroy, :toggle_check, :toggle_star, :edit, :update]
 
   def index
@@ -243,7 +243,7 @@ class RecurringTodosController < ApplicationController
 
   private
   
-  def init 
+  def init
     @days_of_week = [ ['Sunday',0], ['Monday',1], ['Tuesday', 2], ['Wednesday',3], ['Thursday',4], ['Friday',5], ['Saturday',6]]
     @months_of_year = [ 
       ['January',1], ['Februari',2], ['March', 3], ['April',4], ['May',5], ['June',6], 
@@ -251,8 +251,6 @@ class RecurringTodosController < ApplicationController
     @xth_day = [['first',1],['second',2],['third',3],['fourth',4],['last',5]]    
     @projects = current_user.projects.find(:all, :include => [:default_context])
     @contexts = current_user.contexts.find(:all)
-    @default_project_context_name_map = build_default_project_context_name_map(@projects).to_json
-    @default_project_tags_map = build_default_project_tags_map(@projects).to_json
   end
   
   def get_recurring_todo_from_param

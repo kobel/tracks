@@ -2,23 +2,18 @@
 <div id="<%= dom_id(note, 'container') %>">
   <h2><%= link_to("Note #{note.id}", note_path(note), :title => "Show note #{note.id}" ) %></h2>
   <div class="project_notes" id="<%= dom_id(note) %>">
-    <%= sanitize(markdown(auto_link(note.body))) %>
-       
+    <%= format_note(note.body) %>
+
     <div class="note_footer">
       <%= link_to_remote( 
-        image_tag("blank.png", 
-          :title =>"Delete this note", 
-          :class=>"delete_item",
-          :id => "delete_note_"+note.id.to_s), 
-        {:update => dom_id(note),
-        :loading => visual_effect(:fade, dom_id(note, 'container')),
-        :complete => "Element.remove('#{dom_id(note, 'container')}');",
-        :url => note_path(note),
+        image_tag("blank.png", :title =>"Delete this note", :class=>"delete_item", :id => "delete_note_"+note.id.to_s), 
+	:url => note_path(note),
+	:html => {:class => 'delete_note', :title => "delete note"},
         :method => :delete,
-        :confirm => "Are you sure that you want to delete the note \'#{note.id.to_s}\'?" },
-        { :class => 'delete_note' }) -%>&nbsp;
+        :confirm => "Are you sure that you want to delete the note \'#{note.id.to_s}\'?",
+        :before => visual_effect(:fade, dom_id(note, 'container'))) -%>&nbsp;
       <%= link_to_function(image_tag( "blank.png", :title => "Edit item", :class=>"edit_item"),
-        "Element.toggle('#{dom_id(note)}'); Element.toggle('#{dom_id(note, 'edit')}'); Effect.Appear('#{dom_id(note, 'edit')}'); Form.focusFirstElement('#{dom_id(note, 'edit_form')}');" ) + " | " %>
+        "$('##{dom_id(note)}').toggle(); $('##{dom_id(note, 'edit')}').show(); $('##{dom_id(note, 'edit_form')} textarea').focus();" ) + " | " %>
       <%= link_to("In: " + note.project.name, project_path(note.project), :class=>"footer_link" ) %>&nbsp;|&nbsp;
       Created: <%= format_date(note.created_at) %>
       <% if note.updated_at? -%>
@@ -38,3 +33,4 @@
   </div>
 </div>
 <% note = nil -%>
+

@@ -1,8 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  UJS::routes
-  
   map.with_options :controller => 'login' do |login|
     login.login 'login', :action => 'login'
+    login.login_cas 'login_cas', :action => 'login_cas'
     login.formatted_login 'login.:format', :action => 'login'
     login.logout 'logout', :action => 'logout'
     login.formatted_logout 'logout.:format', :action => 'logout'
@@ -45,6 +44,9 @@ ActionController::Routing::Routes.draw do |map|
     # routed to mobile view of tags.
     todos.tag 'todos/tag/:name.m', :action => "tag", :format => 'm'
     todos.tag 'todos/tag/:name', :action => "tag", :name => /.*/
+
+    todos.tags 'tags.autocomplete', :action => "tags", :format => 'autocomplete'
+    todos.auto_complete_for_predecessor 'auto_complete_for_predecessor', :action => 'auto_complete_for_predecessor'
     
     todos.calendar 'calendar.ics', :action => "calendar", :format => 'ics'
     todos.calendar 'calendar', :action => "calendar"
