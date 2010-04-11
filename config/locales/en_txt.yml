@@ -27,6 +27,9 @@ en:
     starred: Starred
     see_starred_actions: See your starred actions
     tickler: Tickler
+    organize: Organize
+    view: View
+    admin: Admin
     repeating_todos: Repeating todos
     manage_recurring_actions: Manage recurring actions
     calendar: Calendar
@@ -43,6 +46,8 @@ en:
     import_export_data: Import and export data
     manage_users: Manage users
     add_delete_users: Add or delete users
+    completed_actions: Completed actions
+    no_completed_actions: Currently there are no completed actions.
 
   login:
     title: Please log in to use Tracks

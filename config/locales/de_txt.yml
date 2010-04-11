@@ -46,6 +46,8 @@ de:
     import_export_data: Daten importieren und exportieren
     manage_users: Verwalte Benutzer
     add_delete_users: Benutzer hinzufügen oder löschen
+    completed_actions: Abgeschlossene Aufgaben
+    no_completed_actions: Momentan sind keine abgeschlossenen Aufgaben vorhanden.
 
   login:
     title: Zur Verwendung von Tracks bitte einloggen
