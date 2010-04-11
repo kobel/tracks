@@ -9,7 +9,9 @@ en:
     project: Project
     projects: Projects
     context: Context
-    contexts: Contexts
+    contexts: contexts
+    Contexts: Contexts
+    none: None
     tags_separate_with_commas: Tags (separate with commas)
     due: Due
     show_from: Show from
@@ -48,6 +50,21 @@ en:
     add_delete_users: Add or delete users
     completed_actions: Completed actions
     no_completed_actions: Currently there are no completed actions.
+    no_incomplete_actions_in_context: Currently there are no incomplete actions in this context.
+    no_incomplete_actions_in_project: Currently there are no incomplete actions in this project.
+    currently_there_are_no: Currently there are no
+    no_notes: 'Currently there are no notes: add notes to projects from individual project pages.'
+    no_projects: Currently there are no projects.
+    name: Name
+    description_optional: Description (optional)
+    default_context_optional: Default Context (optional)
+    default_tags_optional: Default Tags (optional)
+    add_project: Add Project
+    take_me_to_new_project_page: Take me to the new project page
+    hide_form: Hide form
+    hide_new_project_form: Hide new project form
+    hide_new_context_form: Hide new context form
+    hide_new_context_form: Hide new action form
 
   login:
     title: Please log in to use Tracks

@@ -13,7 +13,7 @@
   <h2>Actions in this project</h2>
   <div id="p<%= project.id %>items" class="items toggle_target">
     <div id="p<%= project.id %>empty-nd" style="display:<%= @not_done.empty? ? 'block' : 'none'%>;">
-      <div class="message"><p>Currently there are no incomplete actions in this project</p></div>
+      <div class="message"><p><%= I18n.t("common.no_incomplete_actions_in_project") %></p></div>
     </div>
     <%= render :partial => "todos/todo", :collection => @not_done, :locals => { :parent_container_type => "project" } %>
   </div>

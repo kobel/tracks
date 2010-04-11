@@ -10,6 +10,8 @@ de:
     projects: Projekte
     context: Kontext
     contexts: Kontexte
+    Contexts: Kontexte
+    none: Keine
     tags_separate_with_commas: Tags (mit Kommas trennen)
     due: Fällig
     show_from: Zeigen ab
@@ -48,6 +50,21 @@ de:
     add_delete_users: Benutzer hinzufügen oder löschen
     completed_actions: Abgeschlossene Aufgaben
     no_completed_actions: Momentan sind keine abgeschlossenen Aufgaben vorhanden.
+    no_incomplete_actions_in_context: Momentan sind keine unvollendeten Aufgaben in diesem Kontext.
+    no_incomplete_actions_in_project: Momentan sind keine unvollendeten Aufgaben in diesem Projekt.
+    currently_there_are_no: Momentan sind keine
+    no_notes: 'Momentan sind keine Notizen vorhanden: auf den individuellen Projektseiten kannst du den Projekten Notizen hinzufügen.'
+    no_projects: Momentan sind keine Projekte vorhanden.
+    name: Name
+    description_optional: Beschreibung (optional)
+    default_context_optional: Standard Kontext (optional)
+    default_tags_optional: Standard Tags (optional)
+    add_project: Projekt hinzufügen
+    take_me_to_new_project_page: Zum neuen Projekt wechseln
+    hide_form: Formular verbergen
+    hide_new_project_form: Verberge das Formular für ein neues Projekt
+    hide_new_context_form: Verberge das Formular für einen neuen Kontext
+    hide_new_action_form: Verberge das Formular für eine neue Aufgabe
 
   login:
     title: Zur Verwendung von Tracks bitte einloggen
