@@ -25,10 +25,27 @@ de:
     logout: Abmelden
     home: Startseite
     starred: Sternaufgaben
-    see_your_starred_actions: Zeige die Sternaktionen
+    see_starred_actions: Zeige die Sternaufgaben
     tickler: Aufgeschobene Aufgaben
+    organize: Organisation
+    view: Ansicht
+    admin: Admin
     repeating_todos: Wiederkehrende Aufgaben
     manage_recurring_actions: Wiederkehrende Aufgaben verwalten
+    calendar: Kalender
+    calendar_of_due_actions: Kalender mit fälligen Aufgaben
+    done: Erledigt
+    completed: Abgeschlossene Aufgaben
+    feeds: Feeds
+    see_list_of_feeds: Liste der verfügbaren Feeds
+    statistics: Statistiken
+    see_statistics: Zeige Statistiken
+    preferences: Einstellungen
+    show_preferences: Zeige Einstellungen
+    export: Export
+    import_export_data: Daten importieren und exportieren
+    manage_users: Verwalte Benutzer
+    add_delete_users: Benutzer hinzufügen oder löschen
 
   login:
     title: Zur Verwendung von Tracks bitte einloggen

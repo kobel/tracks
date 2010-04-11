@@ -1,35 +1,35 @@
 <div id="single_box" class="container context prefscontainer">
 
-  <h2><%= I18n.t "preferences.title" %></h2>
+  <h2><%= I18n.t("preferences.title") %></h2>
 
   <ul id="prefs">
-    <li><%= I18n.t "preferences.first_name" %>: <span class="highlight"><%= current_user.first_name %></span></li>
-    <li><%= I18n.t "preferences.last_name" %>: <span class="highlight"><%= current_user.last_name %></span></li>
-    <li><%= I18n.t "preferences.date_format" %>: <span class="highlight"><%= prefs.date_format %></span> <%= I18n.t "preferences.your_current_date" %>: <%= format_date(current_user.time) %></li>
-    <li><%= I18n.t "preferences.title_date_format" %>: <span class="highlight"><%= prefs.title_date_format %></span> <%= I18n.t "preferences.your_current_title_date" %>: <%= current_user.time.strftime(prefs.title_date_format) %></li>
-    <li><%= I18n.t "preferences.time_zone" %>: <span class="highlight"><%= prefs.time_zone %></span> <%= I18n.t "preferences.your_current_time" %>: <%= current_user.time.strftime('%I:%M %p') %></li>
-    <li><%= I18n.t "preferences.week_starts_on" %>: <span class="highlight"><%= Preference.day_number_to_name_map[prefs.week_starts] %></span></li>
-    <li><%= I18n.t "preferences.show_the_last" %> <span class="highlight"><%= prefs.show_number_completed %></span> <%= I18n.t "preferences.completed_items" %></li>
-    <li><%= I18n.t "preferences.show_completed_projects_in_sidebar" %>: <span class="highlight"><%= prefs.show_completed_projects_in_sidebar %></span></li>
-    <li><%= I18n.t "preferences.show_hidden_projects_in_sidebar" %>: <span class="highlight"><%= prefs.show_hidden_projects_in_sidebar %></span></li>
-    <li><%= I18n.t "preferences.show_hidden_contexts_in_sidebar" %>: <span class="highlight"><%= prefs.show_hidden_contexts_in_sidebar %></span></li>
-    <li><%= I18n.t "preferences.go_to_project_page_on_complete" %>: <span class="highlight"><%= prefs.show_project_on_todo_done %></span></li>
-    <li><%= I18n.t "preferences.staleness_starts_after" %> <span class="highlight"><%= prefs.staleness_starts %></span> <%= I18n.t "preferences.days" %></li>
-    <li><%= I18n.t "preferences.due_style" %>: <span class="highlight">
+    <li><%= I18n.t("preferences.first_name") %>: <span class="highlight"><%= current_user.first_name %></span></li>
+    <li><%= I18n.t("preferences.last_name") %>: <span class="highlight"><%= current_user.last_name %></span></li>
+    <li><%= I18n.t("preferences.date_format") %>: <span class="highlight"><%= prefs.date_format %></span> <%= I18n.t("preferences.your_current_date") %>: <%= format_date(current_user.time) %></li>
+    <li><%= I18n.t("preferences.title_date_format") %>: <span class="highlight"><%= prefs.title_date_format %></span> <%= I18n.t("preferences.your_current_title_date") %>: <%= current_user.time.strftime(prefs.title_date_format) %></li>
+    <li><%= I18n.t("preferences.time_zone") %>: <span class="highlight"><%= prefs.time_zone %></span> <%= I18n.t("preferences.your_current_time") %>: <%= current_user.time.strftime('%I:%M %p') %></li>
+    <li><%= I18n.t("preferences.week_starts_on") %>: <span class="highlight"><%= Preference.day_number_to_name_map[prefs.week_starts] %></span></li>
+    <li><%= I18n.t("preferences.show_the_last") %> <span class="highlight"><%= prefs.show_number_completed %></span> <%= I18n.t("preferences.completed_items") %></li>
+    <li><%= I18n.t("preferences.show_completed_projects_in_sidebar") %>: <span class="highlight"><%= prefs.show_completed_projects_in_sidebar %></span></li>
+    <li><%= I18n.t("preferences.show_hidden_projects_in_sidebar") %>: <span class="highlight"><%= prefs.show_hidden_projects_in_sidebar %></span></li>
+    <li><%= I18n.t("preferences.show_hidden_contexts_in_sidebar") %>: <span class="highlight"><%= prefs.show_hidden_contexts_in_sidebar %></span></li>
+    <li><%= I18n.t("preferences.go_to_project_page_on_complete") %>: <span class="highlight"><%= prefs.show_project_on_todo_done %></span></li>
+    <li><%= I18n.t("preferences.staleness_starts_after") %> <span class="highlight"><%= prefs.staleness_starts %></span> <%= I18n.t("preferences.days") %></li>
+    <li><%= I18n.t("preferences.due_style") %>: <span class="highlight">
   	<% if prefs.due_style == Preference.due_styles[:due_in_n_days] %>
-  		<%= I18n.t "preferences.due_in__days" %>
+  		<%= I18n.t("preferences.due_in__days") %>
   	<% else %>
-  		<%= I18n.t "preferences.due_on__" %>
+  		<%= I18n.t("preferences.due_on__") %>
   	<% end %>
   		 </span></li>
     <% if current_user.is_admin? %>
-      <li><%= I18n.t "preferences.admin_mail" %>: <span class="highlight"><%= prefs.admin_email %></span></li>
+      <li><%= I18n.t("preferences.admin_mail") %>: <span class="highlight"><%= prefs.admin_email %></span></li>
     <% end %>
-    <li><%= I18n.t "preferences.refresh_interval" %>: <span class="highlight"><%= prefs.refresh %></span></li>
-    <li><%= I18n.t "preferences.verbose_action_descriptors" %>: <span class="highlight"><%= prefs.verbose_action_descriptors %></span></li>
-    <li><%= I18n.t "preferences.actions_per_page" %>: <span class="highlight"><%= prefs.mobile_todos_per_page %></span></li>
-    <li><%= I18n.t "preferences.from_email" %>: <span class="highlight"><%= prefs.sms_email %></span></li>
-    <li><%= I18n.t "preferences.default_email_context" %>: <span class="highlight"><%= prefs.sms_context.nil? ? "None" : prefs.sms_context.name  %></span></li>
+    <li><%= I18n.t("preferences.refresh_interval") %>: <span class="highlight"><%= prefs.refresh %></span></li>
+    <li><%= I18n.t("preferences.verbose_action_descriptors") %>: <span class="highlight"><%= prefs.verbose_action_descriptors %></span></li>
+    <li><%= I18n.t("preferences.actions_per_page") %>: <span class="highlight"><%= prefs.mobile_todos_per_page %></span></li>
+    <li><%= I18n.t("preferences.from_email") %>: <span class="highlight"><%= prefs.sms_email %></span></li>
+    <li><%= I18n.t("preferences.default_email_context") %>: <span class="highlight"><%= prefs.sms_context.nil? ? "None" : prefs.sms_context.name  %></span></li>
   </ul>
   <div class="actions">
     <%= link_to "Edit preferences &raquo;", { :controller => 'preferences', :action => 'edit'}, :class => 'edit_link' %>

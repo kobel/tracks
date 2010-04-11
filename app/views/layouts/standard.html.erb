@@ -46,31 +46,31 @@
       </div>
       <div id="navcontainer">
         <ul class="sf-menu">
-          <li><%= navigation_link(I18n.t(:"common.home"), home_path, {:accesskey => "t", :title => I18n.t(:"common.home")} ) %></li>
-          <li><%= navigation_link(I18n.t(:"common.starred"), tag_path("starred"), :title => I18n.t(:"common.see_your_starred_actions") ) %></li>
-          <li><%= navigation_link(I18n.t(:"common.projects"), projects_path, {:accesskey=>"p", :title=>I18n.t(:"common.projects")} ) %></li>
-          <li><%= navigation_link(I18n.t(:"common.tickler"), tickler_path, {:accesskey =>"k", :title => I18n.t(:"common.tickler")} ) %></li>
-          <li><a href="#">Organize</a>
+          <li><%= navigation_link( I18n.t(:"common.home"), home_path, {:accesskey => "t", :title => I18n.t(:"common.home")} ) %></li>
+          <li><%= navigation_link( I18n.t(:"common.starred"), tag_path("starred"), :title => I18n.t(:"common.see_starred_actions") ) %></li>
+          <li><%= navigation_link( I18n.t(:"common.projects"), projects_path, {:accesskey=>"p", :title=>I18n.t(:"common.projects")} ) %></li>
+          <li><%= navigation_link( I18n.t(:"common.tickler"), tickler_path, {:accesskey =>"k", :title => I18n.t(:"common.tickler")} ) %></li>
+          <li><a href="#"><%= I18n.t("common.organize") %></a>
             <ul>
               <li><%= navigation_link( I18n.t(:"common.contexts"), contexts_path, {:accesskey=>"c", :title => I18n.t(:"common.contexts")} ) %></li>
               <li><%= navigation_link( I18n.t(:"common.notes"), notes_path, {:accesskey => "o", :title => I18n.t(:"common.show_all_notes")} ) %></li>
               <li><%= navigation_link( I18n.t(:"common.repeating_todos"), {:controller => "recurring_todos", :action => "index"}, :title => I18n.t(:"common.manage_recurring_actions") ) %></li>
             </ul>
           </li>
-          <li><a href="#">View</a>
+          <li><a href="#"><%= I18n.t("common.view") %></a>
             <ul>
-              <li><%= navigation_link( "Calendar", calendar_path, :title => "Calendar of due actions" ) %></li>
-              <li><%= navigation_link( "Done", done_path, {:accesskey=>"d", :title=>"Completed"} ) %></li>
-              <li><%= navigation_link( "Feeds", {:controller => "feedlist", :action => "index"}, :title => "See a list of available feeds" ) %></li>
-              <li><%= navigation_link( "Statistics", {:controller => "stats", :action => "index"}, :title => "See your statistics" ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.calendar"), calendar_path, :title => I18n.t(:"common.calendar_of_due_actions") ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.done"), done_path, {:accesskey=>"d", :title=> I18n.t(:"common.completed")} ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.feeds"), {:controller => "feedlist", :action => "index"}, :title => I18n.t(:"common.see_list_of_feeds") ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.statistics"), {:controller => "stats", :action => "index"}, :title => I18n.t(:"common.see_statistics") ) %></li>
             </ul>
           </li>
-          <li><a href="#">Admin</a>
+          <li><a href="#"><%= I18n.t("common.admin") %></a>
             <ul>
-              <li><%= navigation_link( "Preferences", preferences_path, {:accesskey => "u", :title => "Show my preferences"} ) %></li>
-              <li><%= navigation_link( "Export", {:controller => "data", :action => "index"}, {:accesskey => "i", :title => "Import and export data"} ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.preferences"), preferences_path, {:accesskey => "u", :title => I18n.t(:"common.show_preferences")} ) %></li>
+              <li><%= navigation_link( I18n.t(:"common.export"), {:controller => "data", :action => "index"}, {:accesskey => "i", :title => I18n.t(:"common.import_export_data")} ) %></li>
               <% if current_user.is_admin? -%>
-                <li><%= navigation_link("Manage users", users_path, {:accesskey => "a", :title => "Add or delete users"} ) %></li>
+                <li><%= navigation_link(I18n.t(:"common.manage_users"), users_path, {:accesskey => "a", :title => I18n.t(:"common.add_delete_users")} ) %></li>
               <% end -%>
             </ul>
           </li>

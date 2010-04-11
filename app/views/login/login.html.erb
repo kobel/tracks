@@ -8,26 +8,26 @@
 
   <%= render_flash %>
 
-  <h3><%= I18n.t "login.title" %>:</h3>
+  <h3><%= I18n.t("login.title") %>:</h3>
 <% if show_database_form %>
   <div id="database_auth_form" style="display:<%=(@prefered_auth.eql?('database')) ? "block" : "none"%>">
       <% form_tag :action=> 'login' do %>
         <table>
           <tr>
-            <td><label for="user_login"><%= I18n.t "login.login" %>:</label></td>
+            <td><label for="user_login"><%= I18n.t("login.login") %>:</label></td>
             <td><input type="text" name="user_login" id="user_login" value="" class="login_text" /></td>
           </tr>
           <tr> 
-            <td><label for="user_password"><%= I18n.t "login.password" %>:</label></td>
+            <td><label for="user_password"><%= I18n.t("login.password") %>:</label></td>
             <td><input type="password" name="user_password" id="user_password" class="login_text" /></td>
           </tr>
          <tr> 
-            <td><label for="user_noexpiry"><%= I18n.t "login.stay_logged_in" %>:</label></td>
+            <td><label for="user_noexpiry"><%= I18n.t("login.stay_logged_in") %>:</label></td>
             <td><input type="checkbox" name="user_noexpiry" id="user_noexpiry" checked  /></td>
           </tr>
           <tr> 
             <td></td>
-            <td><input type="submit" name="login" value="<%= I18n.t "login.sign_in" %> &#187;" class="primary" /></td>
+            <td><input type="submit" name="login" value="<%= I18n.t("login.sign_in") %> &#187;" class="primary" /></td>
           </tr>
         </table>
       <% end %>

@@ -25,10 +25,24 @@ en:
     logout: Logout
     home: Home
     starred: Starred
-    see_your_starred_actions: See your starred actions
+    see_starred_actions: See your starred actions
     tickler: Tickler
     repeating_todos: Repeating todos
     manage_recurring_actions: Manage recurring actions
+    calendar: Calendar
+    calendar_of_due_actions: Calendar of due actions
+    done: Done
+    completed: Completed
+    feeds: Feeds
+    see_list_of_feeds: See a list of available feeds
+    statistics: Statistics
+    see_statistics: See your statistics
+    preferences: Preferences
+    show_preferences: Show my preferences
+    export: Export
+    import_export_data: Import and export data
+    manage_users: Manage users
+    add_delete_users: Add or delete users
 
   login:
     title: Please log in to use Tracks

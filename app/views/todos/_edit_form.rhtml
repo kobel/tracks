@@ -4,27 +4,27 @@
 <%= source_view_tag( @source_view ) -%>
 <%= "<INPUT TYPE=\"hidden\" name=\"_tag_name\" value=\""+ @tag_name+"\">" unless @tag_name.nil? -%>
 
-<label for="<%= dom_id(@todo, 'description') %>"><%= I18n.t "common.description" %></label>
+<label for="<%= dom_id(@todo, 'description') %>"><%= I18n.t("common.description") %></label>
 <%= text_field( "todo", "description", "size" => 30, "tabindex" => 8, "maxlength" => 100) %>
 
-<label for="<%= dom_id(@todo, 'notes') %>"><%= I18n.t "common.notes" %></label>
+<label for="<%= dom_id(@todo, 'notes') %>"><%= I18n.t("common.notes") %></label>
 <%= text_area( "todo", "notes", "cols" => 29, "rows" => 4, "tabindex" => 9) %>
 
 <div class="project_input">
-  <label for="<%= dom_id(@todo, 'project_name') %>"><%= I18n.t "common.project" %></label>
+  <label for="<%= dom_id(@todo, 'project_name') %>"><%= I18n.t("common.project") %></label>
   <input id="<%= dom_id(@todo, 'project_name') %>" name="project_name" autocomplete="off" tabindex="10" size="30" type="text" value="<%= @todo.project.nil? ? 'None' : @todo.project.name.gsub(/"/,"&quot;") %>" />
 </div>
 
 <div class="context_input">
-  <label for="<%= dom_id(@todo, 'context_name') %>"><%= I18n.t "common.context" %></label>
+  <label for="<%= dom_id(@todo, 'context_name') %>"><%= I18n.t("common.context") %></label>
   <input id="<%= dom_id(@todo, 'context_name') %>" name="context_name" autocomplete="off" tabindex="11" size="30" type="text" value="<%= @todo.context.name %>" />
 </div>
 
-<label class="tag_list_label" for="<%= dom_id(@todo, 'tag_list') %>"><%= I18n.t "common.tags_separate_with_commas" %></label>
+<label class="tag_list_label" for="<%= dom_id(@todo, 'tag_list') %>"><%= I18n.t("common.tags_separate_with_commas") %></label>
 <%= text_field_tag 'tag_list', tag_list_text, :id => dom_id(@todo, 'tag_list'), :size => 30, :tabindex => 12 %> 
 
 <div class="due_input">
-  <label for="<%= dom_id(@todo, 'due_label') %>"><%= I18n.t "common.due" %></label>
+  <label for="<%= dom_id(@todo, 'due_label') %>"><%= I18n.t("common.due") %></label>
   <%= date_field_tag("todo[due]", dom_id(@todo, 'due'), format_date(@todo.due), "tabindex" => 13) %>
   <a href="#" id="<%= dom_id(@todo, 'due_x') %>" class="date_clear" title="Clear due date">
     <%= image_tag("delete_off.png", :alt => "Clear due date") %>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="show_from_input">
-  <label for="<%= dom_id(@todo, 'show_from') %>"><%= I18n.t "common.show_from" %></label>
+  <label for="<%= dom_id(@todo, 'show_from') %>"><%= I18n.t("common.show_from") %></label>
   <%= date_field_tag("todo[show_from]", dom_id(@todo, 'show_from'), format_date(@todo.show_from), "tabindex" => 14) %>
   <a href="#" id="<%= dom_id(@todo, 'show_from_x') %>" class="date_clear" title="Clear show from date">
     <%= image_tag("delete_off.png", :alt => "Clear show from date") %>
