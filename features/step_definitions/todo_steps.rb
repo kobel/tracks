@@ -37,15 +37,8 @@ When /^I drag "(.*)" to "(.*)"$/ do |dragged, target|
   drag_id = Todo.find_by_description(dragged).id
   drop_id = Todo.find_by_description(target).id
   drag_name = "xpath=//div[@id='line_todo_#{drag_id}']//img[@class='grip']"
-  # xpath does not seem to work here... reverting to css
-  # xpath=//div[@id='line_todo_#{drop_id}']//img[@class='successor_target']
-  drop_name = "css=div#line_todo_#{drop_id} img.successor_target"
-
-  # HACK: the target img is hidden until drag starts. We need to show the img or the
-  # xpath will not find it
-  js="$('div#line_todo_#{drop_id} img.successor_target').show();"
-  selenium.get_eval "(function() {with(this) {#{js}}}).call(selenium.browserbot.getCurrentWindow());"
-
+  drop_name = "xpath=//div[@id='line_todo_#{drop_id}']//div[@class='description']"
+  
   selenium.drag_and_drop_to_object(drag_name, drop_name)
 
   arrow = "xpath=//div[@id='line_todo_#{drop_id}']/div/a[@class='show_successors']/img"
@@ -64,6 +57,13 @@ Then /^I should see ([0-9]+) todos$/ do |count|
   count.to_i.downto 1 do |i|
     match_xpath "div["
   end
+end
+
+When /I change the (.*) field of "([^\"]*)" to "([^\"]*)"$/ do |field, todo_name, new_value|
+  selenium.click("//span[@class=\"todo.descr\"][.=\"#{todo_name}\"]/../../a[@class=\"icon edit_item\"]", :wait_for => :ajax, :javascript_framework => :jquery)
+  selenium.type("css=form.edit_todo_form input[name=#{field}]", new_value)
+  selenium.click("css=button.positive", :wait_for => :ajax, :javascript_framework => :jquery)
+  sleep(5)
 end
 
 Then /^the dependencies of "(.*)" should include "(.*)"$/ do |child_name, parent_name|
@@ -87,4 +87,12 @@ Then /^I should see "([^\"]*)" within the dependencies of "([^\"]*)"$/ do |succe
   # let selenium look for the presence of the successor
   xpath = "xpath=//div[@id='line_todo_#{todo.id}']//div[@id='successor_line_todo_#{successor.id}']//span"
   selenium.wait_for_element(xpath, :timeout_in_seconds => 5)
+end
+
+Then /^I should see the todo "([^\"]*)"$/ do |todo_description|
+  selenium.is_element_present("//span[.=\"#{todo_description}\"]").should be_true
+end
+
+Then /^I should not see the todo "([^\"]*)"$/ do |todo_description|
+  selenium.is_element_present("//span[.=\"#{todo_description}\"]").should be_false
 end

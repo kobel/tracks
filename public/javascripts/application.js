@@ -14,16 +14,14 @@ var TracksForm = {
         toggleDiv.toggleClass('hide_form');
     }, 
     hide_all_recurring: function () {
-        $('#recurring_daily').hide();
-        $('#recurring_weekly').hide();
-        $('#recurring_monthly').hide();
-        $('#recurring_yearly').hide();
+        $.each(['daily', 'weekly', 'monthly', 'yearly'], function(){
+          $('#recurring_'+this).hide();
+        });
     },
     hide_all_edit_recurring: function () {
-        $('#recurring_edit_daily').hide();
-        $('#recurring_edit_weekly').hide();
-        $('#recurring_edit_monthly').hide();
-        $('#recurring_edit_yearly').hide();
+        $.each(['daily', 'weekly', 'monthly', 'yearly'], function(){
+          $('#recurring_edit_'+this).hide();
+        });
     },
     toggle_overlay: function () {
         el = document.getElementById("overlay");
@@ -51,7 +49,7 @@ $.fn.clearForm = function() {
 
 /* Set up authenticity token properly */
 $(document).ajaxSend(function(event, request, settings) {
-  if ( settings.type == 'POST' ) {
+  if ( settings.type == 'POST' || settings.type == 'post' ) {
     if(typeof(AUTH_TOKEN) != 'undefined'){
       settings.data = (settings.data ? settings.data + "&" : "")
         + "authenticity_token=" + encodeURIComponent( AUTH_TOKEN ) + "&"
@@ -231,8 +229,9 @@ function enable_rich_interaction(){
   /* Drag & Drop for successor/predecessor */
   function drop_todo(evt, ui) {
     dragged_todo = ui.draggable[0].id.split('_')[2];
-    dropped_todo = $(this).parents('.item-show').get(0).id.split('_')[2];
+    dropped_todo = this.id.split('_')[2];
     ui.draggable.remove();
+    $('.drop_target').hide(); // IE8 doesn't call stop() in this situation
     $(this).block({message: null});
     $.post(relative_to_root('todos/add_predecessor'),
         {successor: dragged_todo, predecessor: dropped_todo},
@@ -249,7 +248,7 @@ function enable_rich_interaction(){
       start: drag_todo,
       stop: function() {$('.drop_target').hide();}});
 
-  $('.successor_target').droppable({drop: drop_todo,
+  $('.item-show').droppable({drop: drop_todo,
       tolerance: 'pointer',
       hoverClass: 'hover'});
   
@@ -261,9 +260,8 @@ function enable_rich_interaction(){
     ui.draggable.remove();
     target.block({message: null});
     setTimeout(function() {target.show()}, 0);
-    $.post(relative_to_root('todos/update'),
-        {id: dragged_todo,
-         "todo[id]": dragged_todo,
+    $.post(relative_to_root('todos/change_context'),
+        {"todo[id]": dragged_todo,
          "todo[context_id]": context_id},
         function(){target.unblock(); target.hide();}, 'script');
   }
@@ -275,6 +273,8 @@ function enable_rich_interaction(){
 
   /* Reset auto updater */
   field_touched = false;
+
+  $('h2#project_name').editable(save_project_name, {style: 'padding:0px', submit: "OK"});
 }
 
 /* Auto-refresh */
@@ -435,16 +435,12 @@ $(document).ready(function() {
       TracksForm.toggle_overlay();
   });
   $("#recurring_edit_period input").live('click', function(){
-      $.each(['daily', 'weekly', 'monthly', 'yearly'], function(){
-        $('#recurring_edit_'+this).hide();
-        });
+      TracksForm.hide_all_edit_recurring();
       $('#recurring_edit_'+this.id.split('_')[5]).show();
     });
 
   $("#recurring_period input").live('click', function(){
-      $.each(['daily', 'weekly', 'monthly', 'yearly', 'target'], function(){
-        $('#recurring_'+this).hide();
-        });
+      TracksForm.hide_all_recurring();
       $('#recurring_'+this.id.split('_')[4]).show();
     });
 
@@ -467,8 +463,6 @@ $(document).ready(function() {
       $.post(relative_to_root('projects/update/'+project_id), {'project[name]': value, 'update_project_name': 'true'}, highlight, 'script');
       return(value);
   };
-
-  $('h2#project_name').editable(save_project_name, {style: 'padding:0px', submit: "OK"});
 
   $('.alphabetize_link').click(function(evt){
       evt.preventDefault();

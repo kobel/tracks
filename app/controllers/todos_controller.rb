@@ -4,6 +4,7 @@ class TodosController < ApplicationController
 
   skip_before_filter :login_required, :only => [:index, :calendar]
   prepend_before_filter :login_or_feed_token_required, :only => [:index, :calendar]
+  append_before_filter :find_and_activate_ready, :only => [:index, :list_deferred]
   append_before_filter :init, :except => [ :destroy, :completed,
     :completed_archive, :check_deferred, :toggle_check, :toggle_star,
     :edit, :update, :create, :calendar, :auto_complete_for_predecessor, :remove_predecessor, :add_predecessor]
@@ -11,7 +12,6 @@ class TodosController < ApplicationController
   protect_from_forgery :except => [:auto_complete_for_predecessor]
 
   def index
-    current_user.deferred_todos.find_and_activate_ready
     @projects = current_user.projects.find(:all, :include => [:default_context])
     @contexts = current_user.contexts.find(:all)
 
@@ -55,7 +55,7 @@ class TodosController < ApplicationController
     predecessor_list = p.predecessor_list
     
     @todo = current_user.todos.build(p.attributes)
-    
+
     if p.project_specified_by_name?
       project = current_user.projects.find_or_create_by_name(p.project_name)
       @new_project_created = project.new_record_before_save?
@@ -70,8 +70,16 @@ class TodosController < ApplicationController
     end
 
     @todo.add_predecessor_list(predecessor_list)
+
+    # Fix for #977 because AASM overrides @state on creation
+    specified_state = @todo.state
+
     @todo.update_state_from_project
     @saved = @todo.save
+
+    # Fix for #977 because AASM overrides @state on creation
+    @todo.update_attribute('state', specified_state) unless specified_state == "immediate"
+
     unless (@saved == false) || tag_list.blank?
       @todo.tag_with(tag_list)
       @todo.tags.reload
@@ -218,6 +226,23 @@ class TodosController < ApplicationController
     @saved = @todo.save!
     respond_to do |format|
       format.js
+      format.xml { render :xml => @todo.to_xml( :except => :user_id ) }
+    end
+  end
+
+  def change_context
+    @todo = Todo.find(params[:todo][:id])
+    @original_item_context_id = @todo.context_id
+    @context = Context.find(params[:todo][:context_id])
+    @todo.context = @context
+    @saved = @todo.save
+
+    @context_changed = true
+    @message = "Context changed to #{@context.name}"
+    determine_remaining_in_context_count(@original_item_context_id)
+
+    respond_to do |format|
+      format.js {render :action => :update }
       format.xml { render :xml => @todo.to_xml( :except => :user_id ) }
     end
   end
@@ -438,7 +463,6 @@ class TodosController < ApplicationController
     @projects = current_user.projects.find(:all, :include => [ :todos, :default_context ])
     @contexts_to_show = @contexts = current_user.contexts.find(:all, :include => [ :todos ])
     
-    current_user.deferred_todos.find_and_activate_ready
     @not_done_todos = current_user.deferred_todos + current_user.pending_todos
     @count = @not_done_todos.size
     @down_count = @count
@@ -652,11 +676,15 @@ class TodosController < ApplicationController
   def get_todo_from_params
     @todo = current_user.todos.find(params['id'])
   end
+  
+  def find_and_activate_ready
+    current_user.deferred_todos.find_and_activate_ready
+  end
 
   def init
     @source_view = params['_source_view'] || 'todo'
     init_data_for_sidebar unless mobile?
-    init_todos      
+    init_todos
   end
 
   def with_feed_query_scope(&block)
